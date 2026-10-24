@@ -20,6 +20,13 @@ int main() {
     assert(gow1::ee::execute_alu_instruction(cpu, addiu));
     assert(cpu.read_gpr(4).low == 15);
 
+    // The step API advances PC only after a supported instruction.
+    cpu.pc = 0x1000u;
+    assert(gow1::ee::execute_instruction_step(cpu, addu));
+    assert(cpu.pc == 0x1004u);
+    assert(!gow1::ee::execute_instruction_step(cpu, 0xFFFFFFFFu));
+    assert(cpu.pc == 0x1004u);
+
     // Unsupported encoding must be reported rather than treated as executed.
     assert(!gow1::ee::execute_alu_instruction(cpu, 0xFFFFFFFFu));
     assert(cpu.read_gpr(0).low == 0);
