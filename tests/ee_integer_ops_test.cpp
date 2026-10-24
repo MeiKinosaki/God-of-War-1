@@ -31,9 +31,15 @@ int main() {
     assert(cpu.read_gpr(9).low == 0xFFF0u);
 
     gow1::ee::op_xori(cpu, 10, 1, 0xFFFFu);
-    assert(cpu.read_gpr(10).low == 0xF0F0u ^ 0xFFFFu);
+    assert(cpu.read_gpr(10).low == (0xF0F0u ^ 0xFFFFu));
 
-    // Writes to the architectural zero register must remain ignored.
+    gow1::ee::op_addiu(cpu, 11, 1, 0xFFFFu);
+    assert(cpu.read_gpr(11).low == 0xF0EFu);
+
+    cpu.write_gpr(12, gow1::ee::Register128(1, 0));
+    gow1::ee::op_addiu(cpu, 13, 12, 0xFFFFu);
+    assert(cpu.read_gpr(13).low == 0);
+
     gow1::ee::op_addu(cpu, 0, 1, 2);
     assert(cpu.read_gpr(0).low == 0);
     assert(cpu.read_gpr(0).high == 0);
