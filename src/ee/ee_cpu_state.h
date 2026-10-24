@@ -9,8 +9,11 @@ namespace ee {
 // The EE GPRs are 128-bit. Store them as two 64-bit halves without relying
 // on compiler-specific 128-bit integer extensions.
 struct Register128 {
-    std::uint64_t low = 0;
-    std::uint64_t high = 0;
+    std::uint64_t low;
+    std::uint64_t high;
+
+    Register128(std::uint64_t low_value = 0, std::uint64_t high_value = 0) noexcept
+        : low(low_value), high(high_value) {}
 };
 
 struct CpuState {
