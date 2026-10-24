@@ -3,10 +3,11 @@
 #include <array>
 #include <cstdint>
 
-namespace gow1::ee {
+namespace gow1 {
+namespace ee {
 
-// The EE GPRs are 128-bit. Represent them as two 64-bit halves so this
-// portable scaffold does not depend on compiler-specific 128-bit integers.
+// The EE GPRs are 128-bit. Store them as two 64-bit halves without relying
+// on compiler-specific 128-bit integer extensions.
 struct Register128 {
     std::uint64_t low = 0;
     std::uint64_t high = 0;
@@ -35,4 +36,5 @@ struct CpuState {
     }
 };
 
-} // namespace gow1::ee
+} // namespace ee
+} // namespace gow1
