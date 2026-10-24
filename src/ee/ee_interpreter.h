@@ -57,5 +57,15 @@ inline bool execute_alu_instruction(CpuState& cpu, std::uint32_t raw) noexcept {
     }
 }
 
+// Executes one supported non-control-flow instruction and advances PC by 4.
+// Branches, delay slots, exceptions and instruction fetch remain out of scope.
+inline bool execute_instruction_step(CpuState& cpu, std::uint32_t raw) noexcept {
+    if (!execute_alu_instruction(cpu, raw)) {
+        return false;
+    }
+    cpu.pc += 4u;
+    return true;
+}
+
 } // namespace ee
 } // namespace gow1
