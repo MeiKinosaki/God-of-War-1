@@ -4,6 +4,7 @@
 - Portable C++11 little-endian 16/32-bit memory access helpers and overflow-safe range checks.
 - Initial Emotion Engine CPU state container with 128-bit GPR storage represented as two 64-bit halves.
 - Initial 32-bit-lane ALU helpers: ADDU, AND, OR, XOR, NOR, ANDI, ORI, XORI, ADDIU, SLL, SRL, SLT and SLTU.
+- Initial instruction-field decoder for a small supported subset of R-type and I-type MIPS-like encodings, with unsupported instructions classified explicitly.
 - Unit tests for memory, CPU state, and ALU helper behavior.
 - CMake/CTest configuration and a GitHub Actions host-test workflow.
 
@@ -17,7 +18,7 @@
 
 ## Next gates
 1. Run the complete CMake build and CTest suite; preserve logs and fix any failures.
-2. Add an instruction decoder with explicit tests for field extraction and unsupported encodings.
+2. Run the new decoder tests and full CMake/CTest suite; fix any failures before expanding instruction coverage.
 3. Implement PC sequencing, branches and delay slots with separate tests.
 4. Audit source provenance and licenses before selecting an engine strategy.
 5. Validate a lawful Xenon/libXenon toolchain in CI.
