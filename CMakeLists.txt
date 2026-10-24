@@ -12,4 +12,8 @@ if(GOW1_BUILD_TESTS)
     add_executable(ps2_memory_test tests/ps2_memory_test.cpp)
     target_link_libraries(ps2_memory_test PRIVATE gow1_common)
     add_test(NAME ps2_memory_test COMMAND ps2_memory_test)
+
+    add_executable(ee_cpu_state_test tests/ee_cpu_state_test.cpp)
+    target_link_libraries(ee_cpu_state_test PRIVATE gow1_common)
+    add_test(NAME ee_cpu_state_test COMMAND ee_cpu_state_test)
 endif()
