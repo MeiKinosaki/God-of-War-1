@@ -20,4 +20,8 @@ if(GOW1_BUILD_TESTS)
     add_executable(ee_integer_ops_test tests/ee_integer_ops_test.cpp)
     target_link_libraries(ee_integer_ops_test PRIVATE gow1_common)
     add_test(NAME ee_integer_ops_test COMMAND ee_integer_ops_test)
+
+    add_executable(ee_instruction_decode_test tests/ee_instruction_decode_test.cpp)
+    target_link_libraries(ee_instruction_decode_test PRIVATE gow1_common)
+    add_test(NAME ee_instruction_decode_test COMMAND ee_instruction_decode_test)
 endif()
