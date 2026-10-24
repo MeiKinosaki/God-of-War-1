@@ -24,4 +24,8 @@ if(GOW1_BUILD_TESTS)
     add_executable(ee_instruction_decode_test tests/ee_instruction_decode_test.cpp)
     target_link_libraries(ee_instruction_decode_test PRIVATE gow1_common)
     add_test(NAME ee_instruction_decode_test COMMAND ee_instruction_decode_test)
+
+    add_executable(ee_interpreter_test tests/ee_interpreter_test.cpp)
+    target_link_libraries(ee_interpreter_test PRIVATE gow1_common)
+    add_test(NAME ee_interpreter_test COMMAND ee_interpreter_test)
 endif()
